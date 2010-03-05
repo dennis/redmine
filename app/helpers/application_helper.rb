@@ -478,8 +478,10 @@ module ApplicationHelper
           end
           # check if page exists
           wiki_page = link_project.wiki.find_page(page)
-          link_to((title || page), format_wiki_link.call(link_project, Wiki.titleize(page), anchor),
-                                   :class => ('wiki-page' + (wiki_page ? '' : ' new')))
+          url = format_wiki_link.call(link_project, Wiki.titleize(page), anchor)
+          url_params = { :class => ('wiki-page' + (wiki_page ? '' : ' new')) }
+          url_params[:rel] = "nofollow" if (url =~ /^https?:\/\//)
+          link_to((title || page), url, url_params)
         else
           # project or wiki doesn't exist
           all

@@ -135,7 +135,7 @@ module Redmine
                 url=url[0..-2] # discard closing parenth from url
                 post = ")"+post # add closing parenth to post
               end
-              %(#{leading}<a class="external" href="#{proto=="www."?"http://www.":proto}#{url}">#{proto + url}</a>#{post})
+              %(#{leading}<a class="external" rel="nofollow" href="#{proto=="www."?"http://www.":proto}#{url}">#{proto + url}</a>#{post})
             end
           end
         end

@@ -36,30 +36,30 @@ class ApplicationHelperTest < HelperTestCase
   
   def test_auto_links
     to_test = {
-      'http://foo.bar' => '<a class="external" href="http://foo.bar">http://foo.bar</a>',
-      'http://foo.bar/~user' => '<a class="external" href="http://foo.bar/~user">http://foo.bar/~user</a>',
-      'http://foo.bar.' => '<a class="external" href="http://foo.bar">http://foo.bar</a>.',
-      'https://foo.bar.' => '<a class="external" href="https://foo.bar">https://foo.bar</a>.',
-      'This is a link: http://foo.bar.' => 'This is a link: <a class="external" href="http://foo.bar">http://foo.bar</a>.',
-      'A link (eg. http://foo.bar).' => 'A link (eg. <a class="external" href="http://foo.bar">http://foo.bar</a>).',
-      'http://foo.bar/foo.bar#foo.bar.' => '<a class="external" href="http://foo.bar/foo.bar#foo.bar">http://foo.bar/foo.bar#foo.bar</a>.',
-      'http://www.foo.bar/Test_(foobar)' => '<a class="external" href="http://www.foo.bar/Test_(foobar)">http://www.foo.bar/Test_(foobar)</a>',
-      '(see inline link : http://www.foo.bar/Test_(foobar))' => '(see inline link : <a class="external" href="http://www.foo.bar/Test_(foobar)">http://www.foo.bar/Test_(foobar)</a>)',
-      '(see inline link : http://www.foo.bar/Test)' => '(see inline link : <a class="external" href="http://www.foo.bar/Test">http://www.foo.bar/Test</a>)',
-      '(see inline link : http://www.foo.bar/Test).' => '(see inline link : <a class="external" href="http://www.foo.bar/Test">http://www.foo.bar/Test</a>).',
-      '(see "inline link":http://www.foo.bar/Test_(foobar))' => '(see <a href="http://www.foo.bar/Test_(foobar)" class="external">inline link</a>)',
-      '(see "inline link":http://www.foo.bar/Test)' => '(see <a href="http://www.foo.bar/Test" class="external">inline link</a>)',
-      '(see "inline link":http://www.foo.bar/Test).' => '(see <a href="http://www.foo.bar/Test" class="external">inline link</a>).',
-      'www.foo.bar' => '<a class="external" href="http://www.foo.bar">www.foo.bar</a>',
-      'http://foo.bar/page?p=1&t=z&s=' => '<a class="external" href="http://foo.bar/page?p=1&#38;t=z&#38;s=">http://foo.bar/page?p=1&#38;t=z&#38;s=</a>',
-      'http://foo.bar/page#125' => '<a class="external" href="http://foo.bar/page#125">http://foo.bar/page#125</a>',
-      'http://foo@www.bar.com' => '<a class="external" href="http://foo@www.bar.com">http://foo@www.bar.com</a>',
-      'http://foo:bar@www.bar.com' => '<a class="external" href="http://foo:bar@www.bar.com">http://foo:bar@www.bar.com</a>',
-      'ftp://foo.bar' => '<a class="external" href="ftp://foo.bar">ftp://foo.bar</a>',
-      'ftps://foo.bar' => '<a class="external" href="ftps://foo.bar">ftps://foo.bar</a>',
-      'sftp://foo.bar' => '<a class="external" href="sftp://foo.bar">sftp://foo.bar</a>',
+      'http://foo.bar' => '<a class="external" rel="nofollow" href="http://foo.bar">http://foo.bar</a>',
+      'http://foo.bar/~user' => '<a class="external" rel="nofollow" href="http://foo.bar/~user">http://foo.bar/~user</a>',
+      'http://foo.bar.' => '<a class="external" rel="nofollow" href="http://foo.bar">http://foo.bar</a>.',
+      'https://foo.bar.' => '<a class="external" rel="nofollow" href="https://foo.bar">https://foo.bar</a>.',
+      'This is a link: http://foo.bar.' => 'This is a link: <a class="external" rel="nofollow" href="http://foo.bar">http://foo.bar</a>.',
+      'A link (eg. http://foo.bar).' => 'A link (eg. <a class="external" rel="nofollow" href="http://foo.bar">http://foo.bar</a>).',
+      'http://foo.bar/foo.bar#foo.bar.' => '<a class="external" rel="nofollow" href="http://foo.bar/foo.bar#foo.bar">http://foo.bar/foo.bar#foo.bar</a>.',
+      'http://www.foo.bar/Test_(foobar)' => '<a class="external" rel="nofollow" href="http://www.foo.bar/Test_(foobar)">http://www.foo.bar/Test_(foobar)</a>',
+      '(see inline link : http://www.foo.bar/Test_(foobar))' => '(see inline link : <a class="external" rel="nofollow" href="http://www.foo.bar/Test_(foobar)">http://www.foo.bar/Test_(foobar)</a>)',
+      '(see inline link : http://www.foo.bar/Test)' => '(see inline link : <a class="external" rel="nofollow" href="http://www.foo.bar/Test">http://www.foo.bar/Test</a>)',
+      '(see inline link : http://www.foo.bar/Test).' => '(see inline link : <a class="external" rel="nofollow" href="http://www.foo.bar/Test">http://www.foo.bar/Test</a>).',
+      '(see "inline link":http://www.foo.bar/Test_(foobar))' => '(see <a href="http://www.foo.bar/Test_(foobar)" rel="nofollow" class="external">inline link</a>)',
+      '(see "inline link":http://www.foo.bar/Test)' => '(see <a href="http://www.foo.bar/Test" rel="nofollow" class="external">inline link</a>)',
+      '(see "inline link":http://www.foo.bar/Test).' => '(see <a href="http://www.foo.bar/Test" rel="nofollow" class="external">inline link</a>).',
+      'www.foo.bar' => '<a class="external" rel="nofollow" href="http://www.foo.bar">www.foo.bar</a>',
+      'http://foo.bar/page?p=1&t=z&s=' => '<a class="external" rel="nofollow" href="http://foo.bar/page?p=1&#38;t=z&#38;s=">http://foo.bar/page?p=1&#38;t=z&#38;s=</a>',
+      'http://foo.bar/page#125' => '<a class="external" rel="nofollow" href="http://foo.bar/page#125">http://foo.bar/page#125</a>',
+      'http://foo@www.bar.com' => '<a class="external" rel="nofollow" href="http://foo@www.bar.com">http://foo@www.bar.com</a>',
+      'http://foo:bar@www.bar.com' => '<a class="external" rel="nofollow" href="http://foo:bar@www.bar.com">http://foo:bar@www.bar.com</a>',
+      'ftp://foo.bar' => '<a class="external" rel="nofollow" href="ftp://foo.bar">ftp://foo.bar</a>',
+      'ftps://foo.bar' => '<a class="external" rel="nofollow" href="ftps://foo.bar">ftps://foo.bar</a>',
+      'sftp://foo.bar' => '<a class="external" rel="nofollow" href="sftp://foo.bar">sftp://foo.bar</a>',
       # two exclamation marks
-      'http://example.net/path!602815048C7B5C20!302.html' => '<a class="external" href="http://example.net/path!602815048C7B5C20!302.html">http://example.net/path!602815048C7B5C20!302.html</a>',
+      'http://example.net/path!602815048C7B5C20!302.html' => '<a class="external" rel="nofollow" href="http://example.net/path!602815048C7B5C20!302.html">http://example.net/path!602815048C7B5C20!302.html</a>',
     }
     to_test.each { |text, result| assert_equal "<p>#{result}</p>", textilizable(text) }
   end
@@ -119,17 +119,17 @@ RAW
   
   def test_textile_external_links
     to_test = {
-      'This is a "link":http://foo.bar' => 'This is a <a href="http://foo.bar" class="external">link</a>',
+      'This is a "link":http://foo.bar' => 'This is a <a href="http://foo.bar" rel="nofollow" class="external">link</a>',
       'This is an intern "link":/foo/bar' => 'This is an intern <a href="/foo/bar">link</a>',
-      '"link (Link title)":http://foo.bar' => '<a href="http://foo.bar" title="Link title" class="external">link</a>',
-      '"link (Link title with "double-quotes")":http://foo.bar' => '<a href="http://foo.bar" title="Link title with &quot;double-quotes&quot;" class="external">link</a>',
+      '"link (Link title)":http://foo.bar' => '<a href="http://foo.bar" rel="nofollow" title="Link title" class="external">link</a>',
+      '"link (Link title with "double-quotes")":http://foo.bar' => '<a href="http://foo.bar" rel="nofollow" title="Link title with &quot;double-quotes&quot;" class="external">link</a>',
       "This is not a \"Link\":\n\nAnother paragraph" => "This is not a \"Link\":</p>\n\n\n\t<p>Another paragraph",
       # no multiline link text
       "This is a double quote \"on the first line\nand another on a second line\":test" => "This is a double quote \"on the first line<br />and another on a second line\":test",
       # mailto link
       "\"system administrator\":mailto:sysadmin@example.com?subject=redmine%20permissions" => "<a href=\"mailto:sysadmin@example.com?subject=redmine%20permissions\">system administrator</a>",
       # two exclamation marks
-      '"a link":http://example.net/path!602815048C7B5C20!302.html' => '<a href="http://example.net/path!602815048C7B5C20!302.html" class="external">a link</a>',
+      '"a link":http://example.net/path!602815048C7B5C20!302.html' => '<a href="http://example.net/path!602815048C7B5C20!302.html" rel="nofollow" class="external">a link</a>',
     }
     to_test.each { |text, result| assert_equal "<p>#{result}</p>", textilizable(text) }
   end
@@ -205,7 +205,7 @@ RAW
       # invalid expressions
       'source:'                     => 'source:',
       # url hash
-      "http://foo.bar/FAQ#3"       => '<a class="external" href="http://foo.bar/FAQ#3">http://foo.bar/FAQ#3</a>',
+      "http://foo.bar/FAQ#3"       => '<a class="external" rel="nofollow" href="http://foo.bar/FAQ#3">http://foo.bar/FAQ#3</a>',
     }
     @project = Project.find(1)
     to_test.each { |text, result| assert_equal "<p>#{result}</p>", textilizable(text), "#{text} failed" }

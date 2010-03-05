@@ -810,6 +810,7 @@ class RedCloth3 < String
           else
             url, url_title = check_refs( url )
             title ||= url_title
+            external_link = (url =~ /^https?:\/\//);
             
             # Idea below : an URL with unbalanced parethesis and
             # ending by ')' is put into external parenthesis
@@ -819,10 +820,11 @@ class RedCloth3 < String
             end
             atts = pba( atts )
             atts = " href=\"#{ url }#{ slash }\"#{ atts }"
+            atts << " rel=\"nofollow\"" if external_link
             atts << " title=\"#{ htmlesc title }\"" if title
             atts = shelve( atts ) if atts
             
-            external = (url =~ /^https?:\/\//) ? ' class="external"' : ''
+            external = ' class="external"' if external_link
             
             "#{ pre }<a#{ atts }#{ external }>#{ text }</a>#{ post }"
           end
